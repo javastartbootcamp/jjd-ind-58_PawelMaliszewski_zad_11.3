@@ -12,12 +12,12 @@ public class Cpu extends MotherBoardComponent implements Overclockable {
 
     @Override
     public void overclock(int overclockByMhz) throws OverHeatingComponentExemption {
-        int temp = overclockingIncreaseOfTemperature(CPU_ONE_MHZ_TEMP_INCREASE, overclockByMhz);
+        int temp = (int) (CPU_ONE_MHZ_TEMP_INCREASE * overclockByMhz);
         if (averageWorkingTemperature + temp >= maxTemperature) {
             throw new OverHeatingComponentExemption("Nie można zwiększyć taktowania, ryzyko uszkodzenia CPU, Aktualna temp: "
                     + averageWorkingTemperature + ", Maksymalna dopuszczalna temp: " + maxTemperature);
         }
-        averageWorkingTemperature += overclockByMhz * CPU_ONE_MHZ_TEMP_INCREASE;
+        averageWorkingTemperature += temp;
         increaseClockFrequency(overclockByMhz);
     }
 }

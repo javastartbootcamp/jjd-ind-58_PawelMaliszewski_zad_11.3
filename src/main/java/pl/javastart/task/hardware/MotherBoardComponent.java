@@ -14,10 +14,6 @@ public abstract class MotherBoardComponent extends Component implements Overcloc
         this.maxTemperature = maxTemperature;
     }
 
-    protected int overclockingIncreaseOfTemperature(double oneMhzTempIncrease, int overclockByFrequency) {
-        return (int) (oneMhzTempIncrease * overclockByFrequency);
-    }
-
     protected void increaseClockFrequency(int increaseBy) {
         mhz += increaseBy;
     }

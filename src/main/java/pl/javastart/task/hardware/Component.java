@@ -18,8 +18,7 @@ public abstract class Component  {
 
     @Override
     public String toString() {
-        return "Component, " + getClass().getSimpleName() +
-                ", model='" + model + '\'' +
+        return  " model='" + model + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", serialNumber='" + serialNumber;
     }

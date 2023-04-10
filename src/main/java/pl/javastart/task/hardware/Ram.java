@@ -23,12 +23,12 @@ public class Ram extends MotherBoardComponent {
 
     @Override
     public void overclock(int overclockByMhz) throws OverHeatingComponentExemption {
-        int temp = overclockingIncreaseOfTemperature(RAM_ONE_MHZ_TEMP_INCREASE, overclockByMhz);
+        int temp = (int) (RAM_ONE_MHZ_TEMP_INCREASE * overclockByMhz);
         if (averageWorkingTemperature + temp >= maxTemperature) {
             throw new OverHeatingComponentExemption("Nie można zwiększyć taktowania, ryzyko uszkodzenia RAM, Aktualna temp: "
                     + averageWorkingTemperature + ", Maksymalna dopuszczalna temp: " + maxTemperature);
         }
-        averageWorkingTemperature += overclockByMhz * RAM_ONE_MHZ_TEMP_INCREASE;
+        averageWorkingTemperature += temp;
         increaseClockFrequency(overclockByMhz);
     }
 
