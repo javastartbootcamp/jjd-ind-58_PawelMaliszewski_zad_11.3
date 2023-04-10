@@ -12,25 +12,25 @@ public class Computer {
     private final ComputerDrive computerDrive;
 
     public Computer(Cpu cpu, Ram ram, ComputerDrive computerDrive) {
-        throwExemptionIfNull(cpu);
-        throwExemptionIfNull(ram);
-        throwExemptionIfNull(computerDrive);
+        throwExceptionsIfNull(cpu);
+        throwExceptionsIfNull(ram);
+        throwExceptionsIfNull(computerDrive);
         this.cpu = cpu;
         this.ram = ram;
         this.computerDrive = computerDrive;
     }
 
-    private void throwExemptionIfNull(Component component) {
+    private void throwExceptionsIfNull(Component component) {
         if (component == null) {
             throw new NullPointerException("Nie można zbudować komputera bez wszystkich elementów");
         }
     }
 
-    public void overClockCpu(int overclockByMhz) throws OverHeatingComponentExemption {
+    public void overClockCpu(int overclockByMhz) throws OverHeatingComponentException {
         cpu.overclock(overclockByMhz);
     }
 
-    public void overClockRam(int overclockByMhz) throws OverHeatingComponentExemption {
+    public void overClockRam(int overclockByMhz) throws OverHeatingComponentException {
         ram.overclock(overclockByMhz);
     }
 

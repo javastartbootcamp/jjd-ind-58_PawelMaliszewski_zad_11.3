@@ -1,6 +1,6 @@
 package pl.javastart.task.hardware;
 
-import pl.javastart.task.OverHeatingComponentExemption;
+import pl.javastart.task.OverHeatingComponentException;
 
 public abstract class Component  {
     protected String model;
@@ -13,7 +13,7 @@ public abstract class Component  {
         this.serialNumber = serialNumber;
     }
 
-    public void overclock(int overclockByMhz) throws OverHeatingComponentExemption {
+    public void overclock(int overclockByMhz) throws OverHeatingComponentException {
     }
 
     @Override

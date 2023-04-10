@@ -20,7 +20,7 @@ public class Main {
 //            computer.overClockCpu(200);
 //            computer.overClockRam(100);
             System.out.println(computer);
-        } catch (OverHeatingComponentExemption e) {
+        } catch (OverHeatingComponentException | RuntimeException e) {
             System.err.println(e.getMessage());
         }
     }

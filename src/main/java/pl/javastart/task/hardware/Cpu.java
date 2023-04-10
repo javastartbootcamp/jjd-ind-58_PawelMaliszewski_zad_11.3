@@ -1,6 +1,6 @@
 package pl.javastart.task.hardware;
 
-import pl.javastart.task.OverHeatingComponentExemption;
+import pl.javastart.task.OverHeatingComponentException;
 
 public class Cpu extends MotherBoardComponent implements Overclockable {
 
@@ -11,10 +11,10 @@ public class Cpu extends MotherBoardComponent implements Overclockable {
     }
 
     @Override
-    public void overclock(int overclockByMhz) throws OverHeatingComponentExemption {
+    public void overclock(int overclockByMhz) throws OverHeatingComponentException {
         int temp = (int) (CPU_ONE_MHZ_TEMP_INCREASE * overclockByMhz);
         if (averageWorkingTemperature + temp >= maxTemperature) {
-            throw new OverHeatingComponentExemption("Nie można zwiększyć taktowania, ryzyko uszkodzenia CPU, Aktualna temp: "
+            throw new OverHeatingComponentException("Nie można zwiększyć taktowania, ryzyko uszkodzenia CPU, Aktualna temp: "
                     + averageWorkingTemperature + ", Maksymalna dopuszczalna temp: " + maxTemperature);
         }
         averageWorkingTemperature += temp;

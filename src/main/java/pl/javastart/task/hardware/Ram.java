@@ -1,6 +1,6 @@
 package pl.javastart.task.hardware;
 
-import pl.javastart.task.OverHeatingComponentExemption;
+import pl.javastart.task.OverHeatingComponentException;
 
 public class Ram extends MotherBoardComponent {
 
@@ -13,19 +13,19 @@ public class Ram extends MotherBoardComponent {
         this.size = size;
     }
 
-    public int getSize() {
+    protected int getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    protected void setSize(int size) {
         this.size = size;
     }
 
     @Override
-    public void overclock(int overclockByMhz) throws OverHeatingComponentExemption {
+    public void overclock(int overclockByMhz) throws OverHeatingComponentException {
         int temp = (int) (RAM_ONE_MHZ_TEMP_INCREASE * overclockByMhz);
         if (averageWorkingTemperature + temp >= maxTemperature) {
-            throw new OverHeatingComponentExemption("Nie można zwiększyć taktowania, ryzyko uszkodzenia RAM, Aktualna temp: "
+            throw new OverHeatingComponentException("Nie można zwiększyć taktowania, ryzyko uszkodzenia RAM, Aktualna temp: "
                     + averageWorkingTemperature + ", Maksymalna dopuszczalna temp: " + maxTemperature);
         }
         averageWorkingTemperature += temp;
